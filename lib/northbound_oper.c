@@ -699,6 +699,18 @@ static enum nb_error nb_op_iter_leaf(struct nb_op_yield_state *ys,
 	return ret;
 }
 
+static enum nb_error nb_op_libyang_cb_get_leaflist(struct nb_op_yield_state *ys,
+						   const struct nb_node *nb_node,
+						   struct lyd_node *parent,
+						   const char *xpath)
+{
+	/* TODO: full get_tree infrastructure from stable/10.4 not yet ported */
+	flog_warn(EC_LIB_NB_OPERATIONAL_DATA,
+		  "%s: get_tree not yet supported for leaflist: %s",
+		  __func__, xpath);
+	return NB_ERR;
+}
+
 static enum nb_error nb_op_iter_leaflist(struct nb_op_yield_state *ys,
 					 const struct nb_node *nb_node,
 					 const char *xpath)
